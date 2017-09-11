@@ -1,0 +1,11 @@
+OpenGL 설치 방법
+sudo apt-get update
+sudo apt-get install build-essential
+sudo apt-get install freeglut3 freeglut3-dev
+sudo apt-get install glew-utils glee-dev
+sudo apt-get install libglew-dev
+
+컴파일 방법
+gcc gl.c -lGL -lglut
+gcc non_anim_sin.c -lGL -lglut -lGLU -lm
+g++ anim_sin.c -lGL -lglut -lGLU -lm

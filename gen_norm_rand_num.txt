@@ -1,0 +1,4 @@
+http://www.design.caltech.edu/erik/Misc/Gaussian.html
+
+해당 내용 참고바람
+가우시안(정규분포)를 따르는 랜덤 난수를 생성할 수 있음
