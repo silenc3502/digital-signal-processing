@@ -74,6 +74,11 @@ void display(void)
         glVertex3f(-100.0, -48.0, 0.0);
         glEnd();
 
+	glBegin(GL_LINE_LOOP);
+	glVertex3f(100.0, -72.0, 0.0);
+        glVertex3f(-100.0, -72.0, 0.0);
+        glEnd();
+
         glColor3f(1.0, 0.0, 1.0);
 
         glBegin(GL_LINE_LOOP);
@@ -111,6 +116,11 @@ void display(void)
         glVertex3f(-100.0, -60.0, 0.0);
         glEnd();
 
+        glBegin(GL_LINE_LOOP);
+        glVertex3f(100.0, -84.0, 0.0);
+        glVertex3f(-100.0, -84.0, 0.0);
+        glEnd();
+
         glColor3f(0.0, 1.0, 1.0);
 
         glBegin(GL_LINE_LOOP);
@@ -119,26 +129,92 @@ void display(void)
         glEnd();
 
         glBegin(GL_LINE_LOOP);
-        glVertex3f(30.0, 100.0, 0.0);
-        glVertex3f(30.0, -100.0, 0.0);
+        glVertex3f(40.0, 100.0, 0.0);
+        glVertex3f(40.0, -100.0, 0.0);
         glEnd();
 
         glBegin(GL_LINE_LOOP);
-        glVertex3f(60.0, 100.0, 0.0);
-        glVertex3f(60.0, -100.0, 0.0);
+        glVertex3f(80.0, 100.0, 0.0);
+        glVertex3f(80.0, -100.0, 0.0);
         glEnd();
 
         glBegin(GL_LINE_LOOP);
-        glVertex3f(-30.0, 100.0, 0.0);
-        glVertex3f(-30.0, -100.0, 0.0);
+        glVertex3f(-40.0, 100.0, 0.0);
+        glVertex3f(-40.0, -100.0, 0.0);
         glEnd();
 
         glBegin(GL_LINE_LOOP);
-        glVertex3f(-60.0, 100.0, 0.0);
-        glVertex3f(-60.0, -100.0, 0.0);
+        glVertex3f(-80.0, 100.0, 0.0);
+        glVertex3f(-80.0, -100.0, 0.0);
         glEnd();
 
         glColor3f(0.0, 1.0, 0.0);
+
+	// Virtual PCM Signal
+        glBegin(GL_LINE_LOOP);
+        glVertex3f(-80.0, -62.0, 0.0);
+        glVertex3f(-80.0, -72.0, 0.0);
+        glEnd();
+
+        glBegin(GL_LINE_LOOP);
+        glVertex3f(-80.0, -62.0, 0.0);
+        glVertex3f(-60.0, -62.0, 0.0);
+        glEnd();
+
+        glBegin(GL_LINE_LOOP);
+        glVertex3f(-60.0, -62.0, 0.0);
+        glVertex3f(-60.0, -72.0, 0.0);
+        glEnd();
+
+        glBegin(GL_LINE_LOOP);
+        glVertex3f(-60.0, -72.0, 0.0);
+        glVertex3f(-40.0, -72.0, 0.0);
+        glEnd();
+
+        glBegin(GL_LINE_LOOP);
+        glVertex3f(-40.0, -62.0, 0.0);
+        glVertex3f(-40.0, -72.0, 0.0);
+        glEnd();
+
+        glBegin(GL_LINE_LOOP);
+        glVertex3f(-40.0, -62.0, 0.0);
+        glVertex3f(0.0, -62.0, 0.0);
+        glEnd();
+
+        glBegin(GL_LINE_LOOP);
+        glVertex3f(0.0, -62.0, 0.0);
+        glVertex3f(0.0, -72.0, 0.0);
+        glEnd();
+
+        glBegin(GL_LINE_LOOP);
+        glVertex3f(0.0, -72.0, 0.0);
+        glVertex3f(20.0, -72.0, 0.0);
+        glEnd();
+
+        glBegin(GL_LINE_LOOP);
+        glVertex3f(20.0, -62.0, 0.0);
+        glVertex3f(20.0, -72.0, 0.0);
+        glEnd();
+
+        glBegin(GL_LINE_LOOP);
+        glVertex3f(20.0, -62.0, 0.0);
+        glVertex3f(40.0, -62.0, 0.0);
+        glEnd();
+
+        glBegin(GL_LINE_LOOP);
+        glVertex3f(40.0, -62.0, 0.0);
+        glVertex3f(40.0, -72.0, 0.0);
+        glEnd();
+
+        glBegin(GL_LINE_LOOP);
+        glVertex3f(40.0, -72.0, 0.0);
+        glVertex3f(80.0, -72.0, 0.0);
+        glEnd();
+
+        glBegin(GL_LINE_LOOP);
+        glVertex3f(80.0, -62.0, 0.0);
+        glVertex3f(80.0, -72.0, 0.0);
+        glEnd();
 
 	draw_omega_sin();
 
@@ -153,22 +229,22 @@ void display(void)
 	drawStringBig (label);
 
 	glColor3f (1.0F, 1.0F, 1.0F);
-	sprintf(label, "A cos(wt)");
+	sprintf(label, "A cos(wt): 00");
 	glRasterPos2f (-100.0, 72.85);
 	drawStringBig (label);
 
 	glColor3f (1.0F, 1.0F, 1.0F);
-	sprintf(label, "A cos(wt + 90)");
+	sprintf(label, "A cos(wt + 90): 01");
 	glRasterPos2f (-100.0, 48.85);
 	drawStringBig (label);
 
 	glColor3f (1.0F, 1.0F, 1.0F);
-	sprintf(label, "A cos(wt + 180)");
+	sprintf(label, "A cos(wt + 180): 10");
 	glRasterPos2f (-100.0, 24.85);
 	drawStringBig (label);
 
 	glColor3f (1.0F, 1.0F, 1.0F);
-	sprintf(label, "A cos(wt + 270)");
+	sprintf(label, "A cos(wt + 270): 11");
 	glRasterPos2f (-100.0, 0.85);
 	drawStringBig (label);
 
@@ -180,6 +256,31 @@ void display(void)
 	glColor3f (1.0F, 1.0F, 1.0F);
 	sprintf(label, "Original Signal(need to make pcm first)");
 	glRasterPos2f (-100.0, -47.15);
+	drawStringBig (label);
+
+	glColor3f (1.0F, 1.0F, 1.0F);
+	sprintf(label, "Virtual PCM");
+	glRasterPos2f (-100.0, -71.15);
+	drawStringBig (label);
+
+	glColor3f (1.0F, 1.0F, 1.0F);
+	sprintf(label, "10");
+	glRasterPos2f (-60.0, -71.15);
+	drawStringBig (label);
+
+	glColor3f (1.0F, 1.0F, 1.0F);
+	sprintf(label, "11");
+	glRasterPos2f (-20.0, -71.15);
+	drawStringBig (label);
+
+	glColor3f (1.0F, 1.0F, 1.0F);
+	sprintf(label, "01");
+	glRasterPos2f (20.0, -71.15);
+	drawStringBig (label);
+
+	glColor3f (1.0F, 1.0F, 1.0F);
+	sprintf(label, "00");
+	glRasterPos2f (60.0, -71.15);
 	drawStringBig (label);
 
 	glutSwapBuffers();
@@ -300,7 +401,7 @@ void draw_omega_sin(void)
 {
 	float amp, angle, period, freq, rad, omega, t, step = 0.0;
 	float radius = 3.0;
-	float x = 0, x2 = 0, y2, y3, y4, y5, y6, y7, y8, cx, cy, cy2, cy3, cy4, cy5, cy6, cy7;
+	float x = 0, x2 = 0, y2, y3, y4, y5, y6, y7, y8, y9, cx, cy, cy2, cy3, cy4, cy5, cy6, cy7, cy8;
 	float tmp;
 	int cache = 0;
 
@@ -347,9 +448,9 @@ void draw_omega_sin(void)
 #endif
 
 	step = get_step(SLICE, period);
-	t = -5.0;
+	t = -0.2;
 
-	//printf("t = %f\n", t);
+	printf("step = %f\n", step);
 	printf("omega = %f\n", omega);
 #if 1
 	if(t > period)
@@ -361,8 +462,8 @@ void draw_omega_sin(void)
 	{
 		if(t > 200 * period)
 		{
+			t = -0.2;
 			break;
-			t = 0.0;
 		}
 
 		//float rad_angle = angle * (M_PI / 180.0);
@@ -377,11 +478,30 @@ void draw_omega_sin(void)
 		// A cos(wt + 270)
 		y5 = amp * cos(omega * 0.2 * t + rad_270);
 		// qpsk signal
-		y6 = 0;
+		y6 = -2 -2 * amp;
+		// step size = 0.000028
+		if(t > -0.200028 && t < -0.1)
+			y6 += amp * cos(omega * 0.2 * t + rad_180);
+		else if(t > -0.100028 && t < 0.0)
+			y6 += amp * cos(omega * 0.2 * t + rad_270);
+		else if(t > -0.000028 && t < 0.1)
+			y6 += amp * cos(omega * 0.2 * t + rad_90);
+		else if(t > 0.099972 && t < 0.2)
+			y6 += amp * cos(omega * 0.2 * t);
+		
 		// real signal
 		y7 = 2 * (-2 -2 * amp) + amp * sin(omega * 0.05 * t);
 		// if pcm looks like it
-		y8 = 3 * (-2 -2 * amp) + amp * ceil(sin(omega * 0.2 * t));
+		// just make virtual pcm(hard coding)
+		// y8 = 3 * (-2 -2 * amp) + amp * sin(omega * 0.05 * t);
+#if 0
+		// just test square wave
+		y9 = 4 * (-2 -2 * amp);
+		if(sin(omega * 0.2 * t) > 0)
+			y9 += amp * ceil(sin(omega * 0.2 * t));
+		else
+			y9 += amp * floor(sin(omega * 0.2 * t));
+#endif
 		//y2 = radius * sin((double)rad_angle);
 
 		if(cache)
@@ -398,11 +518,19 @@ void draw_omega_sin(void)
 			glVertex2f(cx * 400, cy4 * 2);
 			glVertex2f(t * 400, y5 * 2);
 
+			if(t < 0.2)
+			{
+				glVertex2f(cx * 400, cy5 * 2);
+				glVertex2f(t * 400, y6 * 2);
+			}
+
 			glVertex2f(cx * 400, cy6 * 2);
 			glVertex2f(t * 400, y7 * 2);
 
-			glVertex2f(cx * 400, cy7 * 2);
-			glVertex2f(t * 400, y8 * 2);
+#if 0
+			glVertex2f(cx * 400, cy8 * 2);
+			glVertex2f(t * 400, y9 * 2);
+#endif
 		}
 
 		cache = 1;
@@ -411,8 +539,10 @@ void draw_omega_sin(void)
 		cy2 = y3;
 		cy3 = y4;
 		cy4 = y5;
+		cy5 = y6;
 		cy6 = y7;
 		cy7 = y8;
+		cy8 = y9;
 		//printf("t = %f, y2 = %f\n", t * 4000, y2);
 	}
 	glEnd();
@@ -425,6 +555,7 @@ int main(int argc, char **argv)
 
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE);
+	//glutInitWindowSize(1200, 800);
 	glutInitWindowSize(1200, 800);
 	glutInitWindowPosition(0, 0);
 	glutCreateWindow("Digital Signal Processing");
