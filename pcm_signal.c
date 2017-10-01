@@ -300,7 +300,7 @@ void draw_omega_sin(void)
 {
 	float amp, angle, period, freq, rad, omega, t, step = 0.0;
 	float radius = 3.0;
-	float x = 0, x2 = 0, y2, y3, y4, y5, y6, y7, cx, cy, cy2, cy3, cy4, cy5, cy6;
+	float x = 0, x2 = 0, y2, y3, y4, y5, y6, y7, y8, cx, cy, cy2, cy3, cy4, cy5, cy6, cy7;
 	float tmp;
 	int cache = 0;
 
@@ -380,6 +380,8 @@ void draw_omega_sin(void)
 		y6 = 0;
 		// real signal
 		y7 = 2 * (-2 -2 * amp) + amp * sin(omega * 0.05 * t);
+		// if pcm looks like it
+		y8 = 3 * (-2 -2 * amp) + amp * ceil(sin(omega * 0.2 * t));
 		//y2 = radius * sin((double)rad_angle);
 
 		if(cache)
@@ -398,6 +400,9 @@ void draw_omega_sin(void)
 
 			glVertex2f(cx * 400, cy6 * 2);
 			glVertex2f(t * 400, y7 * 2);
+
+			glVertex2f(cx * 400, cy7 * 2);
+			glVertex2f(t * 400, y8 * 2);
 		}
 
 		cache = 1;
@@ -407,6 +412,7 @@ void draw_omega_sin(void)
 		cy3 = y4;
 		cy4 = y5;
 		cy6 = y7;
+		cy7 = y8;
 		//printf("t = %f, y2 = %f\n", t * 4000, y2);
 	}
 	glEnd();
