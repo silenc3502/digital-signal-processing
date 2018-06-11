@@ -96,6 +96,7 @@ int main(int argc, char **argv)
 {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
+	glutInitWindowSize(800, 800);
 	glutCreateWindow("Fourier Series(Rectangular Wave)");
 
 	glOrtho(-1.1 * M_PI, 1.1 * M_PI, -0.5, 1.3, -1.0, 1.0);
