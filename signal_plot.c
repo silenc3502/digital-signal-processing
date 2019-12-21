@@ -221,7 +221,7 @@ void draw_omega_sin(void)
 		cache = 1;
 		cx = t;
 		cy = y2;
-		//printf("t = %f, y2 = %f\n", t * 4000, y2);
+		printf("t = %f, y2 = %f\n", t * 4000, y2);
 	}
 	glEnd();
 }

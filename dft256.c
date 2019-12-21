@@ -233,17 +233,17 @@ void draw_spectrum(void)
 		glEnd();
 	}
 
-#if 0
 	glBegin(GL_LINE_STRIP);
 	glVertex2f((-HALF_SLICE + i) * 0.5, res_image[0] / HALF_SLICE);
 	glVertex2f((-HALF_SLICE + i) * 0.5, 0);
 	glEnd();
-#endif
 
+#if 0
 	glBegin(GL_LINE_STRIP);
 	glVertex2f((-HALF_SLICE + i) * 0.5, res_real[0] / HALF_SLICE);
 	glVertex2f((-HALF_SLICE + i) * 0.5, 0);
 	glEnd();
+#endif
 #if 0
 	glBegin(GL_LINE_STRIP);
 
