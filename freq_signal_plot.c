@@ -7,7 +7,7 @@
 
 #define SLICE	360
 
-void draw_omega_sin(void);
+void draw_omega_sin(float);
 
 float common_angles[5] = {15.0, 30.0, 45.0, 60.0, 75.0};
 float freq_table[5] = {1000.0, 2400.0, 5000.0, 24000.0, 77000.0};
@@ -23,18 +23,23 @@ void display(void)
 	glColor3f(1, 0, 0);
 
 	glBegin(GL_LINE_LOOP);
-	glVertex3f(100.0, 0.0, 0.0);
-        glVertex3f(-100.0, 0.0, 0.0);
-        glEnd();
+		glVertex3f(150.0, 0.0, 0.0);
+        glVertex3f(-150.0, 0.0, 0.0);
+    glEnd();
 
-        glColor3f(0.0, 1.0, 0.0);
+    glColor3f(0.0, 1.0, 0.0);
 
-        glBegin(GL_LINE_LOOP);
+    glBegin(GL_LINE_LOOP);
         glVertex3f(0.0, 100.0, 0.0);
         glVertex3f(0.0, -100.0, 0.0);
-        glEnd();
+    glEnd();
 
-	draw_omega_sin();
+	glColor3f(1, 1, 0);
+	draw_omega_sin(100);
+	glColor3f(0, 1, 0);
+	draw_omega_sin(200);
+	glColor3f(1, 0, 1);
+	draw_omega_sin(300);
 	glutSwapBuffers();
 }
 
@@ -73,27 +78,34 @@ float get_step(float slice, float period)
 	return period / slice;
 }
 
-void draw_omega_sin(void)
+void angle2radian(float *angle, float *radian)
 {
-	float amp, period, freq, omega, t, step = 0.0;
+    *radian = *angle * M_PI / 180.0;
+}
+
+void draw_omega_sin(float frequency)
+{
+	float tmp, amp, rad, period, freq, omega, t, step = 0.0, test = 100.0f;
 	float x2 = 0, y2, cx, cy;
 	int cache = 0;
 
-	amp = 10;
-	freq = 100.0;
+	amp = 35;
+	freq = frequency;
 	
 	calc_period(&freq, &period);
 	calc_angular_velocity(&freq, &omega);
 
 	t = step = get_step(SLICE, period);
 
-	if(t > period)
+	calc_period(&test, &tmp);
+
+	if(t > tmp)
 		t = 0.0;
 
 	glBegin(GL_LINES);
 	for(; ; t += step)
 	{
-		if(t > 3 * period)
+		if(t > 3 * tmp)
 		{
 			break;
 			t = 0.0;
@@ -103,14 +115,14 @@ void draw_omega_sin(void)
 
 		if(cache)
 		{
-			glVertex2f(cx * 4000, cy);
-			glVertex2f(t * 4000, y2);
+			glVertex2f(cx * 4500, cy);
+			glVertex2f(t * 4500, y2);
 		}
 
 		cache = 1;
 		cx = t;
 		cy = y2;
-		printf("t = %f, y2 = %f\n", t * 4000, y2);
+		printf("t = %f, y2 = %f\n", t * 4500, y2);
 	}
 	glEnd();
 }

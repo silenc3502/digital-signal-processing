@@ -20,8 +20,6 @@ void display(void)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
 
-	//gluLookAt(0.0, 0.0, 3.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
-	
 	glColor3f(1, 0, 0);
 
 	glBegin(GL_LINE_LOOP);
@@ -60,40 +58,6 @@ void reshape(int w, int h)
         glLoadIdentity();
 }
 
-void keyboard(unsigned char key, int x, int y)
-{
-	switch(key)
-	{
-		case 27:
-			exit(0);
-			break;
-	}
-}
-
-void set_rand_amplitude(float *amp)
-{
-	*amp = rand() % 3 + 3;
-}
-
-void set_angle_with_common_angles(float *angle)
-{
-	*angle = common_angles[rand() % 5];
-}
-
-void angle2radian(float *angle, float *radian)
-{
-	*radian = *angle * M_PI / 180.0;
-}
-
-void radian2angle(float *angle, float *radian)
-{
-	*angle = *radian * 180.0 / M_PI;
-}
-
-void set_rand_frequency(float *freq)
-{
-	*freq = freq_table[rand() % 5];
-}
 
 void calc_period(float *freq, float *period)
 {
@@ -110,74 +74,31 @@ float get_step(float slice, float period)
 	return period / slice;
 }
 
-void cos_sim(float amplitude, float ang_vel, float period)
-{
-	int cnt = 0;
-	float step, t = 0.0;
-
-	t = step = get_step(SLICE, period);
-
-	while(cnt++ < 36)
-	{
-		printf("%.1fcos(%f * %.8f) = %f\n", amplitude, ang_vel,
-			t, amplitude * cos(ang_vel * t));
-		t += step;
-	}
-}
-
-void sin_sim(float amplitude, float ang_vel, float period)
-{
-	int cnt = 0;
-	float step, t = 0.0;
-
-	t = step = get_step(SLICE, period);
-
-	while(cnt++ < 36)
-	{
-		printf("%.1fsin(%f * %.8f) = %f\n", amplitude, ang_vel,
-			t, amplitude * sin(ang_vel * t));
-		t += step;
-	}
-}
-
 void draw_omega_sin(void)
 {
-	float amp, angle, period, freq, rad, omega, t, step = 0.0;
+	float amp, period, freq, omega, t = 0.0, step = 0.0;
 	float radius = 3.0;
-	float x = 0, x2 = 0, y2, cx, cy;
-	float tmp;
+	float x2 = 0, y2 = 0, cx, cy;
 	int cnt = 0, cache = 0;
 
-	srand(time(NULL));
-
 	amp = 10;
-	angle = 45.0;
 	freq = 100.0;
 	
-	angle2radian(&angle, &rad);
 	calc_period(&freq, &period);
 	calc_angular_velocity(&freq, &omega);
 	t = step = get_step(SLICE, period);
 
-	printf("step = %f\n", step);
-
 	if(t > period)
 		t = 0.0;
 
-	//glLineStipple(1, 0xFFEE);
-	//glEnable(GL_LINE_STIPPLE);
-	//glBegin(GL_POINTS);
 	for(; ; t += step)
 	{
 		if(t > 3 * period)
-		{
 			break;
-			t = 0.0;
-		}
 
 		y2 = amp * sin(omega * t);
 
-		if(cache && !(cnt % 16))
+		if(cache && !(cnt % 16))	// 샘플 수가 너무 많음
 		{
 			glBegin(GL_POINTS);
 			glVertex2f(cx * 6000, cy * 6);
@@ -185,8 +106,6 @@ void draw_omega_sin(void)
 			glEnd();
 
 			glBegin(GL_LINE_STRIP);
-			//glVertex2f(cx * 4000, cy * 2);
-			//glVertex2f(cx * 4000, 0);
 			glVertex2f(t * 6000, y2 * 6);
 			glVertex2f(t * 6000, 0);
 			glEnd();
@@ -197,15 +116,10 @@ void draw_omega_sin(void)
 		cy = y2;
 		cnt++;
 	}
-	//glEnd();
-	//glDisable(GL_LINE_STIPPLE);
 }
 
 int main(int argc, char **argv)
 {
-	float amplitude, angle, period, frequency, radian, angular_velocity;
-	float step = 0.0;
-
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE);
 	glutInitWindowSize(1200, 800);

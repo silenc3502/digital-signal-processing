@@ -7,7 +7,7 @@
 
 #define SLICE	360
 
-void draw_omega_sin(void);
+void draw_omega_sin(int);
 
 float common_angles[5] = {15.0, 30.0, 45.0, 60.0, 75.0};
 float freq_table[5] = {1000.0, 2400.0, 5000.0, 24000.0, 77000.0};
@@ -23,18 +23,23 @@ void display(void)
 	glColor3f(1, 0, 0);
 
 	glBegin(GL_LINE_LOOP);
-	glVertex3f(100.0, 0.0, 0.0);
-        glVertex3f(-100.0, 0.0, 0.0);
-        glEnd();
+		glVertex3f(150.0, 0.0, 0.0);
+        glVertex3f(-150.0, 0.0, 0.0);
+    glEnd();
 
-        glColor3f(0.0, 1.0, 0.0);
+    glColor3f(0.0, 1.0, 0.0);
 
-        glBegin(GL_LINE_LOOP);
+    glBegin(GL_LINE_LOOP);
         glVertex3f(0.0, 100.0, 0.0);
         glVertex3f(0.0, -100.0, 0.0);
-        glEnd();
+    glEnd();
 
-	draw_omega_sin();
+	glColor3f(1, 0, 0);
+	draw_omega_sin(1);
+	glColor3f(0, 1, 0);
+	draw_omega_sin(2);
+	glColor3f(1, 0, 1);
+	draw_omega_sin(3);
 	glutSwapBuffers();
 }
 
@@ -73,13 +78,13 @@ float get_step(float slice, float period)
 	return period / slice;
 }
 
-void draw_omega_sin(void)
+void draw_omega_sin(int amplitude)
 {
 	float amp, period, freq, omega, t, step = 0.0;
 	float x2 = 0, y2, cx, cy;
 	int cache = 0;
 
-	amp = 10;
+	amp = amplitude * 10;
 	freq = 100.0;
 	
 	calc_period(&freq, &period);
