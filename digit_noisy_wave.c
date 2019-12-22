@@ -206,13 +206,13 @@ void draw_omega_sin(void)
 		if(cache)
 		{
 			glBegin(GL_POINTS);
-			glVertex2f(cx * 20000, cy * 5);
-			glVertex2f(t * 20000, y2 * 5);
+			glVertex2f(-100 + cx * 20000, cy * 5);
+			glVertex2f(-100 + t * 20000, y2 * 5);
 			glEnd();
 
 			glBegin(GL_LINE_STRIP);
-			glVertex2f(t * 20000, y2 * 5);
-			glVertex2f(t * 20000, 0);
+			glVertex2f(-100 + t * 20000, y2 * 5);
+			glVertex2f(-100 + t * 20000, 0);
 			glEnd();
 		}
 
